@@ -44,12 +44,12 @@ help() {
 }
 
 target=$1
-case $target in 
+case $target in
     substrate)
-	target_func=substrate_test
+        target_func=substrate_test
         ;;
     polkadot)
-	target_func=polkadot_test
+        target_func=polkadot_test
         ;;
     *)
         help
@@ -75,6 +75,8 @@ set_default_variables
 export RUSTFLAGS="-Cdebug-assertions=y -Dwarnings"
 export RUST_BACKTRACE=1
 export WASM_BUILD_NO_COLOR=1
+
+export CARGO_TARGET_DIR="/builds/$target/target-ci"
 
 $target_func
 

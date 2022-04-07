@@ -18,11 +18,13 @@ RUN apt-get install -y --no-install-recommends \
 RUN rm -rf /var/lib/apt/lists/*
 
 # Download and install expressvpn
-ARG APP=expressvpn_2.6.3.3-1_amd64.deb
+ARG APP=expressvpn_3.21.0.2-1_amd64.deb
 RUN wget -q "https://download.expressvpn.xyz/clients/linux/${APP}" -O /tmp/${APP} && \
     dpkg -i /tmp/${APP} && \
-    rm -rf /tmp/*.deb && \
-    apt-get purge -y --auto-remove wget
+    rm -rf /tmp/*.deb
+
+# Remove packages that are not required
+RUN apt-get purge -y --auto-remove wget
 
 # Setup application entrypoint and activation script
 COPY entrypoint.sh /tmp/entrypoint.sh

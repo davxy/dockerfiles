@@ -39,7 +39,7 @@ polkadot_test() {
 }
 
 help() {
-    echo "Usage: subci <substrate|polkadot>"
+    echo "Usage: ci-run <substrate|polkadot>"
     exit
 }
 

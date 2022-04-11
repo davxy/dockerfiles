@@ -1,6 +1,7 @@
 #!/bin/bash
 
 docker run \
+    --name=expressvpn-transmission \
     --env=ACTIVATION_CODE=${EXPRESS_CODE} \
     --env=SERVER=smart \
     --env=T_USERNAME=${TRANSMISSION_USER} \
@@ -12,6 +13,7 @@ docker run \
     --tty=true \
     --rm \
     -p 9091:9091 \
-    --volume=/mnt/data/downloads/transmission:/downloads \
-    --name=expressvpn-transmission \
+    --volume=/mnt/data/transmission/config:/transmission/config \
+    --volume=/mnt/data/transmission/complete:/transmission/complete \
+    --volume=/mnt/data/transmission/incomplete:/transmission/incomplete \
     davxy/expressvpn-transmission

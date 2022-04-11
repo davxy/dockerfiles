@@ -9,8 +9,7 @@ RUN apt-get update && apt-get install -y \
 # Remove cache
 RUN rm -rf /var/lib/apt/lists/*
 
-COPY transmission.sh /tmp/transmission.sh
+# Copy the entry script
+COPY transmission.sh /transmission/transmission.sh
 
-RUN ln -s /var/lib/transmission-daemon/downloads /downloads
-
-CMD ["/bin/bash", "/tmp/transmission.sh"]
+CMD ["/transmission/transmission.sh"]

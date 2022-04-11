@@ -3,9 +3,10 @@
 param=" --allowed ${T_ALLOWED}"
 param="${param} --foreground"
 param="${param} --encryption-preferred"
-param="${param} --incomplete-dir /downloads/incomplete"
 param="${param} --dht"
-param="${param} --download-dir /downloads/complete"
+param="${param} --config-dir /transmission/config"
+param="${param} --download-dir /transmission/complete"
+param="${param} --incomplete-dir /transmission/incomplete"
 if [ -n "$T_USERNAME" ] && [ -n "$T_PASSWORD" ]
 then
     param="${param} --auth"
